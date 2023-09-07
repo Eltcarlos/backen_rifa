@@ -17,7 +17,6 @@ const signUp = async (req, res) => {
       return res.status(200).json({
         success: false,
         message: "Este Usuario ya existe.",
-        error: err,
       });
     }
     const existingPhone = await User.findOne({ phoneNumber });
@@ -25,16 +24,18 @@ const signUp = async (req, res) => {
       return res.status(200).json({
         success: false,
         message: "Este Numero ya existe.",
-        error: err,
       });
     }
+
     const newUser = new User({
       name,
       email,
       password: await User.encryptPassword(password),
       phoneNumber,
     });
+
     await newUser.save();
+
     res.status(201).json({
       success: true,
       message: "El registro se realizo correctamente.",
