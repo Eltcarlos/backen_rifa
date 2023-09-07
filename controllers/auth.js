@@ -43,7 +43,7 @@ const signUp = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "Hubo un error con el registro del usuario.",
+      message: "Puede que ese Número o Correo ya exista intente con otro.",
       error,
     });
   }
