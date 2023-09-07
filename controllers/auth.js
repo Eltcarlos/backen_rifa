@@ -62,17 +62,17 @@ const login = async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({
+      return res.status(201).json({
         success: false,
-        message: "Invalid credentials.",
+        message: "No se cuentra este usuario.",
       });
     }
 
     const isPasswordValid = await User.comparePassword(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({
+      return res.status(201).json({
         success: false,
-        message: "Invalid credentials.",
+        message: "No se cuentra este usuario.",
       });
     }
 
