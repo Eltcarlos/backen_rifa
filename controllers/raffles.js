@@ -56,9 +56,9 @@ const getRaffleById = async (req, res) => {
 const updateRaffle = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description } = req.body;
+    const { name, description, count = "" } = req.body;
 
-    const raffleUpdated = await Raffle.findByIdAndUpdate(id, { name, description });
+    const raffleUpdated = await Raffle.findByIdAndUpdate(id, { name, description, count });
 
     if (!raffleUpdated) {
       return res.status(404).json({

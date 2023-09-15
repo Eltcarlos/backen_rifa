@@ -33,6 +33,9 @@ const raffleSchema = new mongoose.Schema(
     backgroundImage: {
       type: String,
     },
+    count: {
+      type: Date,
+    },
   },
   { timestamps: true }
 );
